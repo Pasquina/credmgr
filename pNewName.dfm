@@ -8,7 +8,7 @@ object fGDNewName: TfGDNewName
   Color = clBtnFace
   ParentFont = True
   OldCreateOrder = True
-  Position = poScreenCenter
+  Position = poOwnerFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
@@ -45,7 +45,7 @@ object fGDNewName: TfGDNewName
       AlignWithMargins = True
       Left = 3
       Top = 40
-      Width = 219
+      Width = 271
       Height = 19
       Margins.Top = 40
       Align = alTop
@@ -58,6 +58,7 @@ object fGDNewName: TfGDNewName
       Font.Style = []
       ParentFont = False
       Layout = tlCenter
+      ExplicitWidth = 219
     end
     object ebNewName: TEdit
       AlignWithMargins = True

@@ -12,6 +12,7 @@ object fCredentials: TfCredentials
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   PixelsPerInch = 96
@@ -32,10 +33,11 @@ object fCredentials: TfCredentials
       AlignWithMargins = True
       Left = 7
       Top = 7
-      Width = 108
+      Width = 171
       Height = 13
       Align = alTop
       Caption = 'Current Credential Set'
+      ExplicitWidth = 108
     end
     object cbCredentialSets: TComboBox
       AlignWithMargins = True
@@ -182,7 +184,7 @@ object fCredentials: TfCredentials
     Left = 96
     Top = 368
     Bitmap = {
-      494C010108004800900020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010108004800940020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

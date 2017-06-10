@@ -11,7 +11,7 @@ uses
 
 procedure Register;
 begin
-  RegisterComponents('VyDev Utilityx', [TGetCredentials]);
+  RegisterComponents('VyDev Utility', [TGetCredentials]);
 end;
 
 end.
