@@ -3,9 +3,11 @@ unit Unit2;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, pGetCredentials, Vcl.StdCtrls,
-  Component1, System.Actions, Vcl.ActnList, Vcl.ToolWin, Vcl.ComCtrls, Vcl.Menus;
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls,
+  Vcl.Forms, Vcl.Dialogs, pGetCredentials, Vcl.StdCtrls, Component1, System.Actions, Vcl.ActnList, Vcl.ToolWin,
+  Vcl.ComCtrls, Vcl.Menus, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.IB,
+  FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client;
 
 type
   TForm2 = class(TForm)
@@ -21,8 +23,10 @@ type
     GetCredentials2: TMenuItem;
     Exit1: TMenuItem;
     N1: TMenuItem;
+    FDConnection1: TFDConnection;
     procedure aGetCredentialsExecute(Sender: TObject);
     procedure aExitExecute(Sender: TObject);
+
   private
     { Private declarations }
   public
@@ -43,14 +47,14 @@ end;
 
 procedure TForm2.aGetCredentialsExecute(Sender: TObject);
 begin
-  if (GetCredentials1.GetParameters = mrOK) then
-    begin
-      StatusBar1.Panels[0].Text := 'Credentials returned.';
-      ListBox1.Items.Clear;
-      ListBox1.Items.AddStrings(GetCredentials1.Credentials);
-    end
+  if (GetCredentials1.GetParameters = mrOK) then                    // obtain credential set as value list
+  begin
+    StatusBar1.Panels[0].Text := 'Credentials returned.';           // display success
+    GetCredentials1.MergeInto(ListBox1.Items);                      // merge into listbox items
+    GetCredentials1.MergeInto(FDConnection1.Params);                // merge into FireDAC connection parameters
+  end
   else
-    StatusBar1.Panels[0].Text := 'Credential retrieval cancelled.';
+    StatusBar1.Panels[0].Text := 'Credential retrieval cancelled.'; // display cancel
 end;
 
 end.

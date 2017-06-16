@@ -19,6 +19,7 @@ type
     procedure SetVendor(const Value: String);
     procedure SetCredentialSet(const Value: String);
     procedure SetCredentials(const Value: TStringList);
+    function GetFullIniFileName(var LIniFile: TFileName): TModalResult;
 
     { Private declarations }
   protected
@@ -27,7 +28,7 @@ type
     { Public declarations }
     property Credentials: TStringList read FCredentials write SetCredentials;
     function GetParameters: TModalResult;
-    procedure MergeInto(const AParamList: TStringList);
+    procedure MergeInto(const AParamList: TStrings);
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
 
@@ -41,7 +42,7 @@ type
 
 implementation
 
-uses pCredentialHandler, System.IOUtils;
+uses pCredentialHandler, System.IOUtils, VCL.Dialogs;
 
 { TGetCredentials }
 
@@ -57,30 +58,53 @@ begin
   inherited;
 end;
 
-function TGetCredentials.GetParameters: TModalResult;
-var
-  LIniFile: TFileName;                     // full drive, path and filename of inifile
-  LValueListEditor: TfCredentials;         // credential manager instance
+{ Test the presence of required properties and return the constructed full path to the .ini file if
+  all are present. Otherwise, display an error message and return Cancel. }
+
+function TGetCredentials.GetFullIniFileName(var LIniFile: TFileName): TModalResult;
 begin
-  LIniFile := TPath.Combine(TPath.Combine( // build the inifile name
-    TPath.Combine(GetHomePath, Vendor), Application), IniFileName);
-  LValueListEditor := TfCredentials.CreateLocal(self, LIniFile, Credentials, CredentialSet);
-  try
-    Result := LValueListEditor.ShowModal;
-    CredentialSet := LValueListEditor.TargetCreds;
-  finally
-    LValueListEditor.Free;
+  if (Vendor <> '') and (Application <> '') and (IniFileName <> '') then // test mandatory properties
+  begin
+    LIniFile := TPath.Combine(TPath.Combine(                             // build the inifile name
+      TPath.Combine(GetHomePath, Vendor), Application), IniFileName);
+    Result := mrOK;                                                      // return filename build succeeded
+  end
+  else
+  begin
+    ShowMessage('All required properties, Vendor, Applilcation and IniFileName must be specified.');
+    Result := mrCancel;
   end;
 end;
 
-procedure TGetCredentials.MergeInto(const AParamList: TStringList);
+function TGetCredentials.GetParameters: TModalResult;
+var
+  LIniFile: TFileName;                                 // full drive, path and filename of inifile
+  LValueListEditor: TfCredentials;                     // credential manager instance
+begin
+  Result := mrCancel;                                  // initialize to no credentials returned
+  if (GetFullIniFileName(LIniFile)) = mrOK then        // get .inifile full path name
+  begin
+    LValueListEditor :=                                // create the dialog window
+      TfCredentials.CreateLocal(self, LIniFile, Credentials, CredentialSet);
+    try
+      Result := LValueListEditor.ShowModal;            // get user input
+      if Result = mrOK then                            // if the user has selected a set
+        CredentialSet := LValueListEditor.TargetCreds; // save the selected set name for next time
+    finally
+      LValueListEditor.Free;                           // return resources
+    end;
+  end;
+end;
+
+procedure TGetCredentials.MergeInto(const AParamList: TStrings);
 var
   LIndex: Integer;
   LFoundIndex: Integer;
 begin
   for LIndex := 0 to Pred(Credentials.Count) do
   begin
-    if AParamList.Find(Credentials.Names[LIndex], LFoundIndex) then
+    LFoundIndex := AParamList.IndexOfName(Credentials.Names[LIndex]);
+    if LFoundIndex >= 0 then
     begin
       AParamList.ValueFromIndex[LFoundIndex] := Credentials.ValueFromIndex[LIndex];
     end

@@ -112,9 +112,6 @@ object Form2: TForm2
       item
         Width = 150
       end>
-    ExplicitLeft = 328
-    ExplicitTop = 160
-    ExplicitWidth = 0
   end
   object GetCredentials1: TGetCredentials
     Vendor = 'VyDevSoft'
@@ -150,5 +147,15 @@ object Form2: TForm2
         Action = aExit
       end
     end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'CharacterSet=UTF8'
+      'ExtendedMetadata=True'
+      'DriverID=IB'
+      'User_Name=sysdba'
+      'Password=masterkey')
+    Left = 232
+    Top = 232
   end
 end
