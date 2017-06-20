@@ -19,4 +19,4 @@ if (GetCredentials1.GetParameters = mrOK) then
   end;
   ```
   
-More complete documentation is contained in the project in the Docs folder. There are several formats for the documentation that was created using Help N Doc. All formats have the same content.
+More complete documentation is contained in the project in the Doc folder. There are two formats for the documentation that was created using Help N Doc. Both formats have the same content.
