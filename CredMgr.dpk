@@ -26,7 +26,7 @@ package CredMgr;
 {$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'Credential Manager Using Value List Editor'}
-{$LIBSUFFIX '250'}
+{$LIBSUFFIX '260'}
 {$RUNONLY}
 {$IMPLICITBUILD OFF}
 
