@@ -597,7 +597,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win32'">
@@ -605,7 +605,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' And '$(Platform)'=='Win64'">
@@ -613,7 +613,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Android'">
@@ -621,7 +621,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win32'">
@@ -629,7 +629,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' And '$(Platform)'=='Win64'">
@@ -637,7 +637,7 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <PreBuildEventIgnoreExitCode>False</PreBuildEventIgnoreExitCode>
         <PreLinkEvent/>
         <PreLinkEventIgnoreExitCode>False</PreLinkEventIgnoreExitCode>
-        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
+        <PostBuildEvent>copy “$(PROJECTDIR)\pCredentialHandler.dfm” “$(BDSCOMMONDIR)\DFMFMX\pCredentialHandler.dfm”&amp;&amp;copy “$(PROJECTDIR)\pNewName.dfm” “$(BDSCOMMONDIR)\DFMFMX\pNewName.dfm”</PostBuildEvent>
         <PostBuildEventIgnoreExitCode>False</PostBuildEventIgnoreExitCode>
     </PropertyGroup>
 </Project>
