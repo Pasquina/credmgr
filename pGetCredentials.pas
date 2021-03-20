@@ -66,7 +66,7 @@ begin
   if (Vendor <> '') and (Application <> '') and (IniFileName <> '') then // test mandatory properties
   begin
     LIniFile := TPath.Combine(TPath.Combine(                             // build the inifile name
-      TPath.Combine(GetHomePath, Vendor), Application), IniFileName);
+      TPath.Combine(System.IOUtils.TPath.GetHomePath, Vendor), Application), IniFileName);
     Result := mrOK;                                                      // return filename build succeeded
   end
   else
