@@ -117,6 +117,7 @@ object Form2: TForm2
     Vendor = 'VyDevSoft'
     Application = 'TestGetCredentials'
     IniFileName = 'TestGet.ini'
+    IniFileScope = issPublic
     Left = 32
     Top = 232
   end

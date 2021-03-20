@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, Vcl.Graphics, Vcl.Controls, Vcl.Forms, IniFiles,
   Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.CategoryButtons, Vcl.Grids, Vcl.ValEdit, System.Actions, Vcl.ActnList,
-  System.ImageList, Vcl.ImgList, pNewName, System.Classes;
+  System.ImageList, Vcl.ImgList, pNewName, System.Classes, Vcl.ComCtrls;
 
 type
 
@@ -24,6 +24,7 @@ type
     aCancel: TAction;
     aNew: TAction;
     ilCredentials: TImageList;
+    sbHandler: TStatusBar;
     procedure cbCredentialSetsChange(Sender: TObject);
     procedure aCancelExecute(Sender: TObject);
     procedure aNewExecute(Sender: TObject);
@@ -303,7 +304,7 @@ end;
 
 procedure TfCredentials.FormCreate(Sender: TObject);
 begin
-
+  sbHandler.Panels[0].Text := CredentialFile.FileName;
 end;
 
 { Delete the currently selected credential set }

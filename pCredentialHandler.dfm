@@ -2,7 +2,7 @@ object fCredentials: TfCredentials
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Credential Manager'
+  Caption = 'Credential Manager II'
   ClientHeight = 430
   ClientWidth = 645
   Color = clBtnFace
@@ -22,12 +22,14 @@ object fCredentials: TfCredentials
     Left = 3
     Top = 3
     Width = 185
-    Height = 424
+    Height = 405
     Align = alLeft
     Padding.Left = 3
     Padding.Top = 3
     Padding.Right = 3
     Padding.Bottom = 3
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 0
     object Label1: TLabel
       AlignWithMargins = True
@@ -37,6 +39,8 @@ object fCredentials: TfCredentials
       Height = 13
       Align = alTop
       Caption = 'Current Credential Set'
+      ParentShowHint = False
+      ShowHint = True
       ExplicitWidth = 108
     end
     object cbCredentialSets: TComboBox
@@ -47,6 +51,8 @@ object fCredentials: TfCredentials
       Height = 21
       Align = alTop
       Style = csDropDownList
+      ParentShowHint = False
+      ShowHint = True
       Sorted = True
       TabOrder = 0
       OnChange = cbCredentialSetsChange
@@ -99,7 +105,6 @@ object fCredentials: TfCredentials
       Images = ilCredentials
       RegularButtonColor = clWhite
       SelectedButtonColor = 15132390
-      ShowHint = True
       TabOrder = 1
     end
   end
@@ -108,7 +113,7 @@ object fCredentials: TfCredentials
     Left = 194
     Top = 3
     Width = 448
-    Height = 424
+    Height = 405
     Align = alClient
     TabOrder = 1
     OnSetEditText = vleCredentialsSetEditText
@@ -118,6 +123,16 @@ object fCredentials: TfCredentials
     RowHeights = (
       18
       18)
+  end
+  object sbHandler: TStatusBar
+    Left = 0
+    Top = 411
+    Width = 645
+    Height = 19
+    Panels = <
+      item
+        Width = 1000
+      end>
   end
   object alCredentials: TActionList
     Images = ilCredentials
@@ -184,7 +199,7 @@ object fCredentials: TfCredentials
     Left = 96
     Top = 368
     Bitmap = {
-      494C0101080048009C0020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
+      494C010108004800040020002000FFFFFFFF2110FFFFFFFFFFFFFFFF424D3600
       00000000000036000000280000008000000060000000010020000000000000C0
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

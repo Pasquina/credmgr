@@ -6,20 +6,28 @@ uses
   System.SysUtils, System.Classes, Vcl.Controls;
 
 type
+  TIniStorageScope = (issCurrentUser, issPublic);
+  TIniStorageScopes = set of TIniStorageScope;
+  TIniStorageScopeName = String;
+
   [ComponentPlatformsAttribute(pidWin32 or pidWin64)]
   TGetCredentials = class(TComponent)
+  const
+    TIniStorageScopeName: array [TIniStorageScope] of TIniStorageScopeName = ('CurrentUser', 'Public');
   private
     FApplication: String;
     FIniFileName: TFileName;
     FVendor: String;
     FCredentialSet: String;
     FCredentials: TStringList;
+    FIniFileScope: TIniStorageScope;
     procedure SetApplication(const Value: String);
     procedure SetIniFileName(const Value: TFileName);
     procedure SetVendor(const Value: String);
     procedure SetCredentialSet(const Value: String);
     procedure SetCredentials(const Value: TStringList);
     function GetFullIniFileName(var LIniFile: TFileName): TModalResult;
+    procedure SetIniFileScope(const Value: TIniStorageScope);
 
     { Private declarations }
   protected
@@ -38,6 +46,7 @@ type
     property Application: String read FApplication write SetApplication;
     property IniFileName: TFileName read FIniFileName write SetIniFileName;
     property CredentialSet: String read FCredentialSet write SetCredentialSet;
+    property IniFileScope: TIniStorageScope read FIniFileScope write SetIniFileScope stored True default issCurrentUser;
   end;
 
 implementation
@@ -62,11 +71,18 @@ end;
   all are present. Otherwise, display an error message and return Cancel. }
 
 function TGetCredentials.GetFullIniFileName(var LIniFile: TFileName): TModalResult;
+var
+  LIniFileFolder: TFilename;                                          // determined by scope property
 begin
+  if IniFileScope = issCurrentUser then
+    LIniFileFolder := System.IOUtils.TPath.GetHomePath                // user's private folder
+  else
+    LIniFileFolder := System.IOUtils.TPath.GetPublicPath;             // public folder (Program Data)
+
   if (Vendor <> '') and (Application <> '') and (IniFileName <> '') then // test mandatory properties
   begin
     LIniFile := TPath.Combine(TPath.Combine(                             // build the inifile name
-      TPath.Combine(System.IOUtils.TPath.GetHomePath, Vendor), Application), IniFileName);
+      TPath.Combine(LIniFileFolder, Vendor), Application), IniFileName);
     Result := mrOK;                                                      // return filename build succeeded
   end
   else
@@ -133,6 +149,11 @@ end;
 procedure TGetCredentials.SetIniFileName(const Value: TFileName);
 begin
   FIniFileName := Value;
+end;
+
+procedure TGetCredentials.SetIniFileScope(const Value: TIniStorageScope);
+begin
+  FIniFileScope := Value;
 end;
 
 procedure TGetCredentials.SetVendor(const Value: String);
