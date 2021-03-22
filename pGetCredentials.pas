@@ -36,6 +36,7 @@ type
     { Public declarations }
     property Credentials: TStringList read FCredentials write SetCredentials;
     function GetParameters: TModalResult;
+    function SilentUpdate: TModalResult;
     procedure MergeInto(const AParamList: TStrings);
     constructor Create(AOwner: TComponent); override;
     destructor Destroy; override;
@@ -51,7 +52,7 @@ type
 
 implementation
 
-uses pCredentialHandler, System.IOUtils, VCL.Dialogs;
+uses pCredentialHandler, System.IOUtils, VCL.Dialogs, System.IniFiles;
 
 { TGetCredentials }
 
@@ -159,6 +160,34 @@ end;
 procedure TGetCredentials.SetVendor(const Value: String);
 begin
   FVendor := Value;
+end;
+
+{ SilentUpdate uses the credentials obtains earlier and saved in the public property
+  Credentials to update the IniFile. No GUI display is made. Entries that are already
+  present in the inifile are updated. Entries not present are added. }
+
+function TGetCredentials.SilentUpdate: TModalResult;
+var
+  LIniFileName: TFileName;                             // fully qualified name of inifile
+  LIniFile: TIniFile;                                  // inifile object for update
+  LIx: Integer;                                        // iteration index
+  LName: String;                                       // work area for entry name
+  LValue: String;                                      // work area for entry value
+begin
+  if GetFullIniFileName(LIniFileName) = mrOK then      // if a valid filename
+    begin
+      LIniFile := TIniFile.Create(LIniFileName);       // prepare the file
+      try
+        for LIx := 0 to Pred(Credentials.Count) do
+          begin
+            LName := Credentials.Names[LIx];           // obtain the name
+            LValue := Credentials.ValueFromIndex[LIx]; // obtain the value
+            LIniFile.WriteString(CredentialSet, LName, LValue); // update/create the value
+          end;
+      finally
+        LIniFile.Free;                                 // make sure resource is returned
+      end;
+    end;
 end;
 
 end.
