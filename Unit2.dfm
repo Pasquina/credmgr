@@ -86,22 +86,16 @@ object Form2: TForm2
   Position = poScreenCenter
   PixelsPerInch = 96
   TextHeight = 13
-  object Button1: TButton
-    Left = 8
-    Top = 8
-    Width = 121
-    Height = 25
-    Action = aGetCredentials
-    TabOrder = 0
-  end
   object ListBox1: TListBox
-    Left = 144
+    Left = 138
     Top = 0
-    Width = 491
+    Width = 497
     Height = 281
-    Align = alRight
+    Align = alClient
     ItemHeight = 13
-    TabOrder = 1
+    TabOrder = 0
+    ExplicitLeft = 144
+    ExplicitWidth = 491
   end
   object StatusBar1: TStatusBar
     Left = 0
@@ -113,11 +107,90 @@ object Form2: TForm2
         Width = 150
       end>
   end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 138
+    Height = 281
+    Align = alLeft
+    TabOrder = 2
+    ExplicitLeft = -6
+    ExplicitTop = -6
+    DesignSize = (
+      138
+      281)
+    object Button1: TButton
+      AlignWithMargins = True
+      Left = 7
+      Top = 7
+      Width = 124
+      Height = 25
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Action = aGetCredentials
+      Align = alTop
+      TabOrder = 0
+      ExplicitLeft = 8
+      ExplicitTop = 8
+      ExplicitWidth = 121
+    end
+    object Button2: TButton
+      AlignWithMargins = True
+      Left = 7
+      Top = 44
+      Width = 124
+      Height = 25
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Align = alTop
+      Caption = 'Silent Update'
+      TabOrder = 1
+      OnClick = Button2Click
+      ExplicitLeft = 24
+      ExplicitTop = 64
+      ExplicitWidth = 75
+    end
+    object leName: TLabeledEdit
+      AlignWithMargins = True
+      Left = 8
+      Top = 89
+      Width = 121
+      Height = 21
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      EditLabel.Width = 31
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Name:'
+      TabOrder = 2
+    end
+    object leValue: TLabeledEdit
+      AlignWithMargins = True
+      Left = 8
+      Top = 131
+      Width = 121
+      Height = 21
+      Margins.Left = 6
+      Margins.Top = 6
+      Margins.Right = 6
+      Margins.Bottom = 6
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      EditLabel.Width = 26
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Value'
+      TabOrder = 3
+    end
+  end
   object GetCredentials1: TGetCredentials
     Vendor = 'VyDevSoft'
     Application = 'TestGetCredentials'
     IniFileName = 'TestGet.ini'
-    IniFileScope = issPublic
     Left = 32
     Top = 232
   end

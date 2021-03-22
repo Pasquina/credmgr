@@ -7,7 +7,8 @@ uses
   Vcl.Forms, Vcl.Dialogs, pGetCredentials, Vcl.StdCtrls, System.Actions, Vcl.ActnList, Vcl.ToolWin,
   Vcl.ComCtrls, Vcl.Menus, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.IB,
-  FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client;
+  FireDAC.Phys.IBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  Vcl.ExtCtrls;
 
 type
   TForm2 = class(TForm)
@@ -24,8 +25,13 @@ type
     Exit1: TMenuItem;
     N1: TMenuItem;
     FDConnection1: TFDConnection;
+    Panel1: TPanel;
+    Button2: TButton;
+    leName: TLabeledEdit;
+    leValue: TLabeledEdit;
     procedure aGetCredentialsExecute(Sender: TObject);
     procedure aExitExecute(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -55,6 +61,12 @@ begin
   end
   else
     StatusBar1.Panels[0].Text := 'Credential retrieval cancelled.'; // display cancel
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+  GetCredentials1.Credentials.AddPair(leName.Text, leValue.Text);
+  GetCredentials1.SilentUpdate;
 end;
 
 end.
