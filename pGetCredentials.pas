@@ -174,6 +174,7 @@ var
   LName: String;                                       // work area for entry name
   LValue: String;                                      // work area for entry value
 begin
+  Result := mrNone;                                    // default Result
   if GetFullIniFileName(LIniFileName) = mrOK then      // if a valid filename
     begin
       LIniFile := TIniFile.Create(LIniFileName);       // prepare the file
@@ -184,6 +185,7 @@ begin
             LValue := Credentials.ValueFromIndex[LIx]; // obtain the value
             LIniFile.WriteString(CredentialSet, LName, LValue); // update/create the value
           end;
+        Result := mrOK;                                // satisfactory result
       finally
         LIniFile.Free;                                 // make sure resource is returned
       end;
